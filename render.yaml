@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cocktail-recipe-finder
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.address 0.0.0.0 --server.port $PORT
+    envVars:
+      - key: THECOCKTAILDB_API_KEY
+        value: "1"

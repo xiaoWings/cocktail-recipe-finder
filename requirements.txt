@@ -1,9 +1,3 @@
-
-
-python-dotenv
-
-pandas
-
-plotly
-
-pytest
+streamlit>=1.36
+requests>=2.32
+python-dotenv>=1.0

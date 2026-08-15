@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.debugpy",
+    "astral-sh.ruff",
+    "github.vscode-github-actions",
+    "github.vscode-pull-request-github",
+    "redhat.vscode-yaml",
+    "tamasfe.even-better-toml"
+  ]
+}
