@@ -55,22 +55,20 @@ cocktail-recipe-finder/
     └── test_parsers.py
 ```
 
-## Local setup in VS Code
+## Local setup in github desktop, visual studio desktop and git bash
 
-1. Open the folder in VS Code: **File > Open Folder...** and choose this project folder.
-2. Create a virtual environment:
-   ```bash
-   python -m venv .venv
-   ```
-3. Activate the virtual environment:
-   ```bash
-   # macOS/Linux
-   source .venv/bin/activate
+1. Open the folder in github desktop and vs desktop: **File > Open Folder...** and choose this project folder.
+2. Navigate to the repo using the command line.
+cd ~/OneDrive\ -\ Prime/Desktop/cocktail-recipe-finder (For Xiaoying specifically)
 
-   # Windows PowerShell
-   .venv\Scripts\Activate.ps1
-   ```
-4. Install dependencies:
+Otherwise: cd ~/you file path for the repository on your local machine
+3. Create a virtual environment:
+
+conda create -n cocktail-recipe-finder python=3.11
+4. Activate the virtual environment:
+
+conda activate cocktail-recipe-finder
+5. Install dependencies:
    ```bash
    python -m pip install --upgrade pip
    python -m pip install -r requirements-dev.txt
