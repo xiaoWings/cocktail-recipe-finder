@@ -109,8 +109,9 @@ THECOCKTAILDB_API_KEY=1
 
 ```bash
 python -m pytest -q
-ruff check .
-ruff format --check .
+python -m ruff check .
+python -m ruff format --check .
+python -m streamlit run app.py
 ```
 
 ## Render deployment
