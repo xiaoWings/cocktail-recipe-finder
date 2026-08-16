@@ -1,10 +1,8 @@
 import streamlit as st
-
 from src.cocktail_finder.api_client import CocktailDBClient, CocktailDBError
 from src.cocktail_finder.grocery import build_grocery_list
 from src.cocktail_finder.parsers import extract_ingredients
 from src.cocktail_finder.services import find_by_pantry, hydrate_filter_results
-
 
 st.set_page_config(
     page_title="Cocktail Recipe Finder",
@@ -62,8 +60,7 @@ def is_drink_selected(drink_id: str | None) -> bool:
         return False
 
     return any(
-        drink.get("idDrink") == drink_id
-        for drink in st.session_state.get("selected_drinks", [])
+        drink.get("idDrink") == drink_id for drink in st.session_state.get("selected_drinks", [])
     )
 
 
@@ -101,9 +98,7 @@ def update_pantry_from_text(pantry_text: str) -> None:
     init_state()
 
     st.session_state.pantry_items = [
-        item.strip()
-        for item in pantry_text.split(",")
-        if item.strip()
+        item.strip() for item in pantry_text.split(",") if item.strip()
     ]
 
 
@@ -206,9 +201,7 @@ def render_grocery_list_page() -> None:
         update_pantry_from_text(pantry_text)
         st.success("Pantry updated.")
 
-    st.caption(
-        "The grocery list below only shows ingredients missing from your pantry."
-    )
+    st.caption("The grocery list below only shows ingredients missing from your pantry.")
 
     grocery = build_grocery_list(
         st.session_state.get("selected_drinks", []),
@@ -284,9 +277,7 @@ def main() -> None:
                 st.session_state.name_results = client.search_drinks_by_name(name)
 
             if st.session_state.get("name_results"):
-                st.caption(
-                    f"{len(st.session_state.name_results)} cocktail(s) found."
-                )
+                st.caption(f"{len(st.session_state.name_results)} cocktail(s) found.")
 
                 for drink in st.session_state.name_results:
                     render_recipe_card(drink)
@@ -304,9 +295,7 @@ def main() -> None:
                 )
 
             if st.session_state.get("ingredient_results"):
-                st.caption(
-                    f"{len(st.session_state.ingredient_results)} cocktail(s) found."
-                )
+                st.caption(f"{len(st.session_state.ingredient_results)} cocktail(s) found.")
 
                 for drink in st.session_state.ingredient_results:
                     render_recipe_card(drink)
@@ -322,11 +311,7 @@ def main() -> None:
             main_ingredient = st.text_input("Main ingredient/liquor", "Gin")
 
             if st.button("Match pantry", key="pantry_match_btn"):
-                pantry_items = [
-                    item.strip()
-                    for item in pantry_text.split(",")
-                    if item.strip()
-                ]
+                pantry_items = [item.strip() for item in pantry_text.split(",") if item.strip()]
 
                 st.session_state.pantry_items = pantry_items
                 st.session_state.pantry_results = find_by_pantry(

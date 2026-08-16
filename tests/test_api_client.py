@@ -48,7 +48,14 @@ def test_api_error_is_wrapped(monkeypatch):
 
 def test_list_filter_values_extracts_expected_key(monkeypatch):
     def mock_get(url, params=None, timeout=None):
-        return MockResponse({"drinks": [{"strCategory": "Cocktail"}, {"strCategory": "Ordinary Drink"}]})
+        return MockResponse(
+            {
+                "drinks": [
+                    {"strCategory": "Cocktail"},
+                    {"strCategory": "Ordinary Drink"},
+                ]
+            }
+        )
 
     monkeypatch.setattr("requests.get", mock_get)
     client = CocktailDBClient(api_key="1")
