@@ -43,6 +43,12 @@ def init_state() -> None:
     # Optional user feedback.
     st.session_state.setdefault("last_added", None)
 
+    # Pagination state for ingredient search
+    st.session_state.setdefault("ingredient_page", 0)
+    st.session_state.setdefault("ingredient_page_size", 10)
+    st.session_state.setdefault("ingredient_total_available", 0)
+    st.session_state.setdefault("ingredient_max_total", 0)
+
 
 def selected_drinks() -> list[dict]:
     """
@@ -285,20 +291,48 @@ def main() -> None:
                 st.info("Search for a cocktail to see recipe cards.")
 
         elif mode == "Search by ingredient/liquor":
+            # Paginated ingredient/liquor search (show 10, 'Show more' up to 50)
             ingredient = st.text_input("Ingredient or liquor", "Gin")
 
             if st.button("Find cocktails", key="ingredient_search_btn"):
-                summaries = client.filter_drinks("i", ingredient)
+                summaries = client.filter_drinks("i", ingredient) or []
+                total_available = len(summaries)
+
+                # enforce hard cap
+                MAX_TOTAL = 50
+                PAGE_SIZE = 10
+                capped_summaries = summaries[:MAX_TOTAL]
+
+                # hydrate and store capped results for paging
                 st.session_state.ingredient_results = hydrate_filter_results(
                     client,
-                    summaries,
+                    capped_summaries,
                 )
+                st.session_state.ingredient_total_available = total_available
+                st.session_state.ingredient_max_total = len(st.session_state.ingredient_results)
+                st.session_state.ingredient_page = 0
+                st.session_state.ingredient_page_size = PAGE_SIZE
 
             if st.session_state.get("ingredient_results"):
-                st.caption(f"{len(st.session_state.ingredient_results)} cocktail(s) found.")
+                total_capped = st.session_state.get("ingredient_max_total", 0)
+                page = st.session_state.get("ingredient_page", 0)
+                page_size = st.session_state.get("ingredient_page_size", 10)
 
-                for drink in st.session_state.ingredient_results:
+                # compute end index for current page (1-based human count)
+                end_index = min((page + 1) * page_size, total_capped)
+                available_total = st.session_state.get("ingredient_total_available", total_capped)
+
+                st.caption(
+                    f"Showing 1-{end_index} of {total_capped} (total available: {available_total})"
+                )
+
+                for drink in st.session_state.ingredient_results[:end_index]:
                     render_recipe_card(drink)
+
+                # show "Show more" while there are more capped results
+                if end_index < total_capped:
+                    if st.button("Show more", key="ingredient_show_more"):
+                        st.session_state.ingredient_page = page + 1
             else:
                 st.info("Search by ingredient or liquor to see recipe cards.")
 
