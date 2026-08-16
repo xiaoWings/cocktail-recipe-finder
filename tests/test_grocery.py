@@ -9,9 +9,6 @@ def test_build_grocery_list_groups_missing_ingredients(margarita_drink):
     assert grocery["triple sec"][0]["measure"] == "1/2 oz"
 
 
-from src.cocktail_finder.grocery import build_grocery_list
-
-
 def test_grocery_list_empty_pantry_includes_recipe_items():
     drink = {
         "strDrink": "Test Cocktail",
