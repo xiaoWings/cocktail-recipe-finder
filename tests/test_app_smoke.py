@@ -6,9 +6,9 @@ AppTest = streamlit_testing.AppTest
 
 
 def test_app_loads_without_initial_network_call():
-    # Get the path to the root directory (parent of tests/ directory)
+    # Get the absolute path to app.py in the project root
     test_dir = Path(__file__).parent
-    app_path = test_dir.parent / "app.py"
+    app_path = (test_dir.parent / "app.py").resolve()
     
-    at = AppTest.from_file(str(app_path)).run(timeout=10)
+    at = AppTest.from_file(app_path).run(timeout=10)
     assert not at.exception
