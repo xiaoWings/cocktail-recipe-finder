@@ -58,17 +58,20 @@ cocktail-recipe-finder/
 ## Local setup in github desktop, visual studio desktop and git bash for windows user
 
 1. Open the folder in github desktop and vs desktop: **File > Open Folder...** and choose this project folder.
-2. Navigate to the repo using the command line.
-cd ~/OneDrive\ -\ Prime/Desktop/cocktail-recipe-finder (For Xiaoying specifically)
+2. Navigate to the repo using the command line:
+cd ~/OneDrive\ -\ Prime/Desktop/cocktail-recipe-finder
+(For Xiaoying specifically)
 
-Otherwise: cd ~/you file path for the repository on your local machine
+Otherwise: 
+cd ~/you file path for the repository on your local machine
+
 3. Create a virtual environment:
-
 conda create -n cocktail-recipe-finder python=3.11
-4. Activate the virtual environment:
 
+5. Activate the virtual environment:
 conda activate cocktail-recipe-finder
-5. Install dependencies:
+
+7. Install dependencies:
    ```bash
    pip install -r requirements.txt
    python -m pip install --upgrade pip
