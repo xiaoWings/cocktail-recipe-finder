@@ -79,19 +79,15 @@ conda activate cocktail-recipe-finder
    ```
 6. Run the app:
    ```bash
-   streamlit run app.py
+   python -m streamlit run app.py
    ```
 
-## VS Code tasks
-
-Open **Terminal > Run Task...** and choose one of:
-
-- `Install dependencies`
-- `Run Streamlit app`
-- `Run tests`
-- `Run lint`
-- `Run format check`
-- `Run local CI`
+## Quick Troubleshoot on Streamlit
+1. Run the app using: python -m streamlit run app.py
+2. Verify Streamlit is Installed: python -m pip show streamlit
+If installed, you'll see version information.
+3. If not installed, Install streamlit: pip install streamlit
+or you can install with: conda install streamlit
 
 ## Tests
 
