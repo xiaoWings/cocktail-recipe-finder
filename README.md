@@ -108,7 +108,7 @@ THECOCKTAILDB_API_KEY=1
 ## Tests
 
 ```bash
-pytest -q
+python -m pytest -q
 ruff check .
 ruff format --check .
 ```
