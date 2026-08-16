@@ -55,7 +55,7 @@ cocktail-recipe-finder/
     └── test_parsers.py
 ```
 
-## Local setup in github desktop, visual studio desktop and git bash
+## Local setup in github desktop, visual studio desktop and git bash for windows user
 
 1. Open the folder in github desktop and vs desktop: **File > Open Folder...** and choose this project folder.
 2. Navigate to the repo using the command line.
@@ -70,16 +70,13 @@ conda create -n cocktail-recipe-finder python=3.11
 conda activate cocktail-recipe-finder
 5. Install dependencies:
    ```bash
+   pip install -r requirements.txt
    python -m pip install --upgrade pip
    python -m pip install -r requirements-dev.txt
    ```
 5. Copy `.env.example` to `.env` if you want local environment variables:
    ```bash
    cp .env.example .env
-   ```
-6. Run the app:
-   ```bash
-   python -m streamlit run app.py
    ```
 
 ## Quick Troubleshoot on Streamlit
@@ -89,6 +86,17 @@ If installed, you'll see version information.
 3. If not installed, Install streamlit: pip install streamlit
 or you can install with: conda install streamlit
 
+## Configuration 
+Create a local ".env" file and store your environment variable in there, copy folloiwng code:
+
+this is the ".env" file...
+THECOCKTAILDB_API_KEY=1
+
+## Usage
+ Run the app:
+   ```bash
+   python -m streamlit run app.py
+   ```
 ## Tests
 
 ```bash
