@@ -108,3 +108,10 @@ Use the included `render.yaml`, or configure manually:
 ## Data source and responsible use
 
 Recipe data and images are from TheCocktailDB. Alcoholic status is displayed when available. This app is a recipe lookup project and does not provide medical, allergy, or safety advice.
+
+## Security and Privacy
+This app uses TheCocktailDB's development API key for educational use.
+Do not commit .env, API keys, passwords, or private credentials.
+Local environment variables can be stored in .env, based on .env.example.
+This app does not store user accounts, passwords, or personal data.
+Pantry ingredients entered in the app are stored only in the current Streamlit session.
