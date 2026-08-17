@@ -72,17 +72,17 @@ cd ~/you file path for the repository on your local machine
 ```bash
 conda create -n cocktail-recipe-finder python=3.11
 ```
-5. Activate the virtual environment:
+4. Activate the virtual environment:
 ```bash
 conda activate cocktail-recipe-finder
 ```
-7. Install dependencies:
+5. Install dependencies:
    ```bash
-   pip install -r requirements.txt
+   python -m pip install -r requirements.txt
    python -m pip install --upgrade pip
    python -m pip install -r requirements-dev.txt
    ```
-5. Copy `.env.example` to `.env` if you want local environment variables:
+6. Copy `.env.example` to `.env` if you want local environment variables:
    ```bash
    cp .env.example .env
    ```
