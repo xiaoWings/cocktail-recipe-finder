@@ -45,7 +45,7 @@ class CocktailDBClient:
         return drinks[0] if drinks else None
 
     def filter_drinks(self, filter_type: str, value: str) -> list[dict]:
-        safe_value = value.strip().replace(" ", "_")
+        safe_value = value.strip()
         return self.get_json("filter.php", {filter_type: safe_value}).get("drinks") or []
 
     def list_filter_values(self, filter_type: str) -> list[str]:
